@@ -13,12 +13,10 @@
 			    <ul class="nav">
 			      <li class="active"><a href="/threads/">Threads</a></li>
 			    </ul>
-			    <form class="navbar-form pull-left" method="post" action="/accounts/login/">{% csrf_token %}
-			    	{{ login_form.username }}
-			    	{{ login_form.password }}
-			    	<input type="submit" class="btn btn-primary" value="Sign-In">
-			    	<a href="/accounts/signup/" class="btn btn-danger">Sign-Up</a>
+			    <form class="navbar-form pull-left" method="post" action="/registration/login/">{% csrf_token %}
 			    </form>
+		    	<a href="/registration/login" class="btn btn-primary">Sign-In</a>
+				<a href="/registration/signup/" class="btn btn-danger">Sign-Up</a>
 			  </div>
 			</div>
 			{% block content %}{% endblock %}
