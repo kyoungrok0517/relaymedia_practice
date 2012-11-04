@@ -1,5 +1,8 @@
+from django import forms
 from django.contrib.auth.models import User
 from django.db import models
+from django.forms.models import ModelForm
+from django.forms.widgets import TextInput, PasswordInput
 
 class Thread(models.Model):
     owner = models.ForeignKey(User)
