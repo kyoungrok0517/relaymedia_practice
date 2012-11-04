@@ -5,6 +5,7 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^threads/', include('threads.urls')),
     # Examples:
     # url(r'^$', 'relay.views.home', name='home'),
     # url(r'^relay/', include('relay.foo.urls')),
