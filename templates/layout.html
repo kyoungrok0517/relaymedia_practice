@@ -15,7 +15,12 @@
 			    </ul>
 			    <form class="navbar-form pull-left" method="post" action="/registration/login/">{% csrf_token %}
 			    </form>
-		    	<a href="/registration/login" class="btn btn-primary">Sign-In</a>
+			    {% if user.is_authenticated %}
+			    	Welcome, <span>{{ user.username }}</span>!
+			    	<a href="/registration/logout" class="btn btn-primary">Log-Out</a>
+			    {% else %}
+		    		<a href="/registration/login" class="btn btn-primary">Sign-In</a>
+		    	{% endif %}
 				<a href="/registration/signup/" class="btn btn-danger">Sign-Up</a>
 			  </div>
 			</div>
