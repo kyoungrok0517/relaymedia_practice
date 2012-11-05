@@ -8,6 +8,14 @@ class Thread(models.Model):
     owner = models.ForeignKey(User)
     title = models.TextField(max_length="255")
     
+class ThreadForm(ModelForm):
+    class Meta:
+        model = Thread
+        fields = ('title', )
+        widgets = {
+            'title': TextInput(),
+        }
+    
 class ThreadItem(models.Model):
     writer = models.ForeignKey(User)
     thread = models.ForeignKey(Thread)
