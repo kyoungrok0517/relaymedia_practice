@@ -6,8 +6,11 @@ from django.forms.widgets import TextInput, PasswordInput
 
 class Thread(models.Model):
     owner = models.ForeignKey(User)
+    title = models.TextField(max_length="255")
     
 class ThreadItem(models.Model):
     writer = models.ForeignKey(User)
     thread = models.ForeignKey(Thread)
     text = models.TextField(max_length="500")
+    vote_count = models.IntegerField()
+    is_start = models.BooleanField()

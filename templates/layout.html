@@ -8,21 +8,23 @@
 	<body>
 		<div class="container">
 			<div class="navbar">
-			  <div class="navbar-inner">
-			    <a class="brand" href="#">Title</a>
-			    <ul class="nav">
-			      <li class="active"><a href="/threads/">Threads</a></li>
-			    </ul>
-			    <form class="navbar-form pull-left" method="post" action="/registration/login/">{% csrf_token %}
-			    </form>
-			    {% if user.is_authenticated %}
-			    	Welcome, <span>{{ user.username }}</span>!
-			    	<a href="/registration/logout" class="btn btn-primary">Log-Out</a>
-			    {% else %}
-		    		<a href="/registration/login" class="btn btn-primary">Sign-In</a>
-		    	{% endif %}
-				<a href="/registration/signup/" class="btn btn-danger">Sign-Up</a>
-			  </div>
+				<div class="navbar-inner">
+					<a class="brand" href="#">Title</a>
+					<ul class="nav">
+						<li class="active">
+							<a href="/threads/">Threads</a>
+						</li>
+					</ul>
+					<form class="navbar-form pull-right" method="post" action="/registration/login/">
+						{% csrf_token %}
+						{% if user.is_authenticated %}
+							Welcome, <span>{{ user.username }}</span>! <a href="/registration/logout" class="btn btn-primary">Log-Out</a>
+						{% else %}
+							Welcome, <span>Guest</span>! <a href="/registration/login" class="btn btn-primary">Sign-In</a>
+						{% endif %}
+						<a href="/registration/signup/" class="btn btn-danger">Sign-Up</a>
+					</form>
+				</div>
 			</div>
 			{% block content %}{% endblock %}
 		</div>
