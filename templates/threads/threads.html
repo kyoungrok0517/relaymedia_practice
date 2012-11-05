@@ -22,7 +22,7 @@
 					<tr>
 						<td>{{ forloop.counter }}</td>
 						<td>{{ thread.owner }}</td>
-						<td>{{ thread.title }}</td>
+						<td><a href="/threads/{{ thread.id }}">{{ thread.title }}</a></td>
 					</tr>
 					{% endfor %}
 				{% else %}

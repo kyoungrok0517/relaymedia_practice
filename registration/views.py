@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from registration.models import SignupForm
 def signup(request):
     if request.method == 'POST':
@@ -13,6 +13,7 @@ def signup(request):
             # Save
             user = User.objects.create_user(username, email, password)
             user.save()
+
     else:
         form = SignupForm()
 
