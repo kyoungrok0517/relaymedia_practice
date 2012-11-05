@@ -21,5 +21,10 @@ class ThreadItem(models.Model):
     writer = models.ForeignKey(User)
     thread = models.ForeignKey(Thread)
     text = models.TextField(max_length="500")
-    vote_count = models.IntegerField()
-    is_start = models.BooleanField()
+    vote_count = models.IntegerField(default=0)
+    is_selected = models.BooleanField(default=False)
+    
+class ThreadItemForm(ModelForm):
+    class Meta:
+        model = ThreadItem
+        fields = ('writer', 'text')
