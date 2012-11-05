@@ -10,11 +10,7 @@ def new(request):
     if request.method == 'POST':
         form = ThreadForm(request.POST)
         if form.is_valid():
-            owner = form.cleaned_data['owner']
-            title = form.cleaned_data['title']
-            
-            thread = Thread(owner=owner, title=title)
-            thread.save()
+            form.save()
             
             return redirect('/threads/')
     else:

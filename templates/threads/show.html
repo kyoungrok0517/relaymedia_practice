@@ -2,6 +2,32 @@
 
 {% block content %}
 <div class="row">
-	{{ thread }}
+	<h1 class="span12">Thread : {{ thread.title }}</h1>
+	<div class="span12">
+		<h2>Owner</h2>
+		<p>
+			{{ thread.owner }}
+		</p>
+	</div>
+	<div class="span12">
+		<h2>Title</h2>
+		<p>
+			{{ thread.title }}
+		</p>
+	</div>
+	<div class="span12">
+		<h2>Description</h2>
+		<textarea readonly cols="100" rows="10" class="span6">
+			{{ thread.description }}
+		</textarea>
+	</div>
+	<div class="span12">
+		<h2>Start Text</h2>
+		<textarea readonly cols="100" rows="10" class="span6"> 
+			{{ thread.start_text }}
+		</textarea>
+	</div>
+	
+	
 </div>
 {% endblock %}

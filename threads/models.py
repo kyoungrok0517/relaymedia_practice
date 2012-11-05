@@ -7,6 +7,7 @@ from django.forms.widgets import TextInput, PasswordInput
 class Thread(models.Model):
     owner = models.ForeignKey(User)
     title = models.TextField(max_length="255")
+    description = models.TextField(max_length="500")
     start_text = models.TextField(max_length="500")
     
 class ThreadForm(ModelForm):
