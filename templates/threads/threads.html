@@ -4,15 +4,45 @@
 <div class="row">
 	<ul class="nav nav-tabs nav-stacked span2">
 		<li class="active">
-			<a href="#">Home</a></li>
+			<a href="#">Home</a>
+		</li>
 		<li>
-			<a href="#">Profile</a></li>
+			<a href="#">Profile</a>
+		</li>
 		<li>
-			<a href="#">Message</a></li>
+			<a href="#">Message</a>
+		</li>
 	</ul>
-	
+
 	<div class="span10">
+		<table class="table table-hover">
+			<tbody>
+				{% if threads %}
+					{% for thread in threads %}
+					<tr>
+						<td>{{ forloop.counter }}</td>
+						<td>{{ thread.owner }}</td>
+						<td>{{ thread.title }}</td>
+					</tr>
+					{% endfor %}
+				{% else %}
+					<tr>
+						<td colspan='3' style="text-align: center;">No Items</td>
+					</tr>
+				{% endif %}
+			</tbody>
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Owner</th>
+					<th>Title</th>
+				</tr>
+			</thead>
+		</table>
 		
+		<div>
+			<a href="#" class="btn btn-primary pull-right">New Thread</a>
+		</div>
 	</div>
 </div>
 {% endblock %}
