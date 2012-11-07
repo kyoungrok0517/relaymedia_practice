@@ -26,10 +26,11 @@ def show(request, thread_id):
     
     if request.method == 'POST':
         form = ThreadItemForm(request.POST)
-        if form.is_valid():
+        if request.user.is_authenticated() and form.is_valid():
             thread = Thread.objects.get(pk=thread_id)
             thread_item = form.save(commit=False)
             thread_item.thread = thread
+            thread_item.writer = request.user
             thread_item.save()
             
             return redirect('/threads/%d/' % int(thread_id))

@@ -28,4 +28,4 @@ class ThreadItem(models.Model):
 class ThreadItemForm(ModelForm):
     class Meta:
         model = ThreadItem
-        fields = ('writer', 'text')
+        fields = ('text',)

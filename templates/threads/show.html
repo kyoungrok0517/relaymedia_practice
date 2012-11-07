@@ -27,11 +27,14 @@
 			{{ thread.start_text }}
 		</textarea>
 	</div>
-	
-	<form method="post" action="." class=="span12">{% csrf_token %}
-		{{ form.as_p }}
-		<input type="submit">
-	</form>
-	
+
+	<div class=="span12">
+		<h2>Add Thread Item</h2>
+		<form method="post" action=".">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit">
+		</form>
+	</div>
 </div>
 {% endblock %}
