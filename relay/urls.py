@@ -6,6 +6,7 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
     url(r'^registration/', include('registration.urls')),
+    url(r'^', include('threads.urls')),
     url(r'^threads/', include('threads.urls')),
     # Examples:
     # url(r'^$', 'relay.views.home', name='home'),

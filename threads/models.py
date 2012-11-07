@@ -13,6 +13,7 @@ class Thread(models.Model):
 class ThreadForm(ModelForm):
     class Meta:
         model = Thread
+        exclude = ('owner',)
         widgets = {
             'title': TextInput(),
         }

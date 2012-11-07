@@ -9,14 +9,17 @@ def index(request):
 def new(request):
     if request.method == 'POST':
         form = ThreadForm(request.POST)
-        if form.is_valid():
-            form.save()
+        
+        if request.user.is_authenticated() and form.is_valid():
+            thread = form.save(commit=False)
+            thread.owner = request.user
+            thread.save() 
             
             return redirect('/threads/')
     else:
         form = ThreadForm()
     
-    return render(request, 'threads/new.html', {'form': form})
+    return render(request, 'threads/new.html', {'form': form, 'user': request.user})
 
 def show(request, thread_id):
     thread = Thread.objects.get(pk=thread_id)
