@@ -3,10 +3,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from registration.models import SignupForm
+from threads.models import DivErrorList
 
 def signup(request):
     if request.method == 'POST':
-        form = SignupForm(request.POST)
+        form = SignupForm(request.POST, error_class=DivErrorList)
         if form.is_valid():
             # Save
             user = form.save()
@@ -19,6 +20,6 @@ def signup(request):
             return redirect('/threads/')
 
     else:
-        form = SignupForm()
+        form = SignupForm(error_class=DivErrorList)
 
     return render(request, 'registration/signup.html', {'form': form})
