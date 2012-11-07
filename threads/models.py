@@ -11,6 +11,9 @@ class Thread(models.Model):
     description = models.TextField(max_length="500")
     start_text = models.TextField(max_length="500")
     
+    def __unicode__(self):
+        return self.title
+    
 class ThreadForm(ModelForm):
     class Meta:
         model = Thread
