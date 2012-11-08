@@ -1,4 +1,11 @@
 # Django settings for relay project.
+import django
+import os
+
+# calculated paths for django and the site
+# used as starting points for various other paths
+DJANGO_ROOT = os.path.dirname(os.path.realpath(django.__file__))
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__)) + '/../'
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -14,7 +21,7 @@ LOGIN_REDIRECT_URL = '/threads/'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'C:/Users/user/My Documents/Aptana Studio 3 Workspace/relaymedia_practice/sqlite.db', # Or path to database file if using sqlite3.
+        'NAME': SITE_ROOT + '/sqlite.db', # Or path to database file if using sqlite3.
         'USER': '', # Not used with sqlite3.
         'PASSWORD': '', # Not used with sqlite3.
         'HOST': '', # Set to empty string for localhost. Not used with sqlite3.
@@ -58,7 +65,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = 'C:/Users/user/My Documents/Aptana Studio 3 Workspace/relay/static'
+STATIC_ROOT = os.path.join(SITE_ROOT, 'static')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -69,7 +76,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "C:/Users/user/My Documents/Aptana Studio 3 Workspace/relaymedia_practice/threads/static",
+    os.path.join(SITE_ROOT, 'threads', 'static'),
 )
 
 # List of finder classes that know how to find static files in
@@ -109,7 +116,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    'C:/Users/user/My Documents/Aptana Studio 3 Workspace/relaymedia_practice/templates',
+    os.path.join(SITE_ROOT, 'templates'),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
